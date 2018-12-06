@@ -20,7 +20,8 @@
     "dist": "NODE_ENV=production webpack -p && npm run dist:esm",
     "dist:esm": "tsc src/MultiDeviceHover.ts --outDir dist/",
     "lint": "tslint src/**/*.ts --fix --project tsconfig.json",
-    "prepare": "npm run dist"
+    "prepare": "npm run dist",
+    "publish": "npm publish"
   },
   "license": "MIT",
   "private": false,
