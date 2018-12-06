@@ -27,7 +27,7 @@ var MultiDeviceHover = /** @class */ (function () {
             return;
         MultiDeviceHover.options = __assign({ 
             // defaulr options
-            hoverClass: 'is-hover', onEnter: function (element) { return element; }, onLeave: function (element) { return element; } }, options);
+            hoverClass: 'is-hover', onEnter: function (el) { return el; }, onLeave: function (el) { return el; }, onDestroy: function (els) { return els; } }, options);
         var enterEvent = MultiDeviceHover.isTouch ? 'touchstart' : 'mouseenter';
         var leaveEvent = MultiDeviceHover.isTouch ? 'touchend' : 'mouseleave';
         Array.prototype.slice.call(elements).forEach(function (element) {
@@ -40,7 +40,7 @@ var MultiDeviceHover = /** @class */ (function () {
      * @param elements
      */
     MultiDeviceHover.destroy = function (elements) {
-        if (elements !== undefined || elements.length === 0)
+        if (typeof elements !== 'object' || elements.length === 0)
             return;
         var enterEvent = MultiDeviceHover.isTouch ? 'touchstart' : 'mouseenter';
         var leaveEvent = MultiDeviceHover.isTouch ? 'touchend' : 'mouseleave';
@@ -48,6 +48,7 @@ var MultiDeviceHover = /** @class */ (function () {
             element.removeEventListener(enterEvent, MultiDeviceHover.enterLisner, false);
             element.removeEventListener(leaveEvent, MultiDeviceHover.leaveLisner, false);
         });
+        MultiDeviceHover.options.onDestroy(elements);
     };
     /**
      * on mouse enter

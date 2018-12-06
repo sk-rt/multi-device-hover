@@ -1,9 +1,12 @@
 'use strict';
+// Param: options object
 interface OptionEntity {
     hoverClass?: string;
     onEnter?: Function;
     onLeave?: Function;
+    onDestroy?: Function;
 }
+// fix mouseEvent.target
 interface HTMLElementEvent<T extends HTMLElement> extends Event {
     target: T;
 }
@@ -23,8 +26,9 @@ export default class MultiDeviceHover {
         MultiDeviceHover.options = {
             // defaulr options
             hoverClass: 'is-hover',
-            onEnter: element => element,
-            onLeave: element => element,
+            onEnter: el => el,
+            onLeave: el => el,
+            onDestroy: els => els,
             ...options
         };
 
@@ -40,13 +44,14 @@ export default class MultiDeviceHover {
      * @param elements
      */
     static destroy(elements: NodeListOf<Element>) {
-        if (elements !== undefined || elements.length === 0) return;
+        if (typeof elements !== 'object' || elements.length === 0) return;
         const enterEvent: string = MultiDeviceHover.isTouch ? 'touchstart' : 'mouseenter';
         const leaveEvent: string = MultiDeviceHover.isTouch ? 'touchend' : 'mouseleave';
         Array.prototype.slice.call(elements).forEach(element => {
             element.removeEventListener(enterEvent, MultiDeviceHover.enterLisner, false);
             element.removeEventListener(leaveEvent, MultiDeviceHover.leaveLisner, false);
         });
+        MultiDeviceHover.options.onDestroy(elements);
     }
     /**
      * on mouse enter

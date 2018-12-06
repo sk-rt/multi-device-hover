@@ -42,14 +42,18 @@ MultiDeviceHover.init(hoverElements)
 
 // Full Options
  MultiDeviceHover.init(hoverElements, {
-    hoverClass : "is-hover" // default "is-hover"
+    hoverClass : "is-hover", // default "is-hover"
     onEnter: (element,mouseEvent) => {
         console.log("Enter:");
         console.log(element,mouseEvent);
     },
     onLeave: (element,mouseEvent) => {
-        console.log("Enter:");
+        console.log("Leave:");
         console.log(element,mouseEvent);
+    },
+    onDestroy: (elements) => {
+        console.log("Destoy:");
+        console.log(elements);
     }
 });
 
