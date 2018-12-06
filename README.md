@@ -7,7 +7,7 @@ Pure JavaScript library that add  `.is-hover` class instead of css `:hover` for 
 ### Install
 
 Using npm, install multi-device-hover  
-<!-- [> npm](https://www.npmjs.com/package/multi-device-hover) -->
+[> npm](https://www.npmjs.com/package/multi-device-hover)
 
 ```bash
 $ npm install multi-device-hover --save
