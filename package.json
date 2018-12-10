@@ -1,7 +1,7 @@
 {
   "name": "multi-device-hover",
   "version": "0.0.3",
-  "description": "Pure JavaScript library that add class instead of css `:hover` for mobile and desktop.",
+  "description": "Pure JavaScript library that add `.is-hover` class instead of css `:hover` for mobile and desktop.",
   "main": "dist/MultiDeviceHover.js",
   "author": "R Sakai",
   "repository": {
@@ -17,8 +17,7 @@
   ],
   "scripts": {
     "dev": "webpack-dev-server",
-    "dist": "NODE_ENV=production webpack -p && npm run dist:esm",
-    "dist:esm": "tsc src/MultiDeviceHover.ts --outDir dist/",
+    "dist": "NODE_ENV=production webpack -p",
     "lint": "tslint src/**/*.ts --fix --project tsconfig.json",
     "prepare": "npm run dist",
     "publish": "npm publish"
@@ -26,7 +25,6 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "cpx": "^1.5.0",
     "prettier": "^1.15.3",
     "ts-loader": "^5.3.1",
     "tslint": "^5.11.0",
