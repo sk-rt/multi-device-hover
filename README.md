@@ -37,12 +37,26 @@ or use stand-alone `dist/standalone/mdh.min.js`
 ```javascript
 // * NodeList only
 const hoverElements = document.querySelectorAll('[data-hover]');
+
 // Default Options
 MultiDeviceHover.init(hoverElements)
-
+```
+```javascript
+// Custom Class
+MultiDeviceHover.init(hoverElements,{
+   hoverClass: 'is-custom-hover' // default "is-hover"
+})
+```
+```javascript
+// Multiple Classes
+MultiDeviceHover.init(hoverElements,{
+   hoverClass: ['is-hover', 'is-custom-hover'] 
+})
+```
+```javascript
 // Full Options
  MultiDeviceHover.init(hoverElements, {
-    hoverClass : "is-hover", // default "is-hover"
+    hoverClass : "is-hover",
     onEnter: (element,mouseEvent) => {
         console.log("Enter:");
         console.log(element,mouseEvent);
@@ -56,10 +70,10 @@ MultiDeviceHover.init(hoverElements)
         console.log(elements);
     }
 });
-
+```
+```javascript
 // Destroy - removeEventListener 
 MultiDeviceHover.destroy(hoverElements)
-
 ```
 
 

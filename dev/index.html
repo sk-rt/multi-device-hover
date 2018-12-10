@@ -6,7 +6,10 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>MultiDeviceHover</title>
         <script src="js/mdh.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"
+        />
         <style>
             nav {
                 padding: 2em;
@@ -15,26 +18,93 @@
                 margin-bottom: 1em;
             }
             a {
-                transition: .4s;
+                transition: 0.4s;
             }
             a.is-hover {
                 opacity: 0.5;
-                transform: scale(1.3);
+                transform: scale(1.2);
+            }
+            a.is-custom-hover {
+                transform: rotate(10deg);
+            }
+            a.is-custom-hover.is-hover {
+                transform: scale(1.2) rotate(10deg);
             }
         </style>
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                const hoverElements = document.querySelectorAll('[data-hover]');
-                MultiDeviceHover.init(hoverElements);
+                //Default
+                const elements = document.querySelectorAll('[data-hover]');
+                MultiDeviceHover.init(elements);
+
+                //CustomClassName
+                const elementsCustom = document.querySelectorAll('[data-hover-custom]');
+                MultiDeviceHover.init(elementsCustom, {
+                    hoverClass: 'is-custom-hover'
+                });
+
+                //MultipleClasses
+                const elementsMulti = document.querySelectorAll('[data-hover-multiple]');
+                MultiDeviceHover.init(elementsMulti, {
+                    hoverClass: ['is-hover', 'is-custom-hover']
+                });
+
+                //Callback
+                const elementsCallback = document.querySelectorAll('[data-hover-callback]');
+                MultiDeviceHover.init(elementsCallback, {
+                    onEnter: (element, event) => {
+                        console.log(element, event);
+                        element.innerText = 'ENTER';
+                    },
+                    onLeave: (element, event) => {
+                        console.log(element, event);
+                        element.innerText = 'LEAVE';
+                    }
+                });
             });
         </script>
     </head>
     <body>
-        <nav>
+        <nav class="content">
+            <h2 class="title is-2">Default</h2>
+            <p>Add Class <code>.is-hover</code></p>
+            <br />
             <ul>
                 <li><a href="" class="button is-primary" data-hover>BUTTON1</a></li>
                 <li><a href="" class="button is-primary" data-hover>BUTTON2</a></li>
                 <li><a href="" class="button is-primary" data-hover>BUTTON3</a></li>
+            </ul>
+        </nav>
+        <nav class="content">
+            <h2 class="title is-2">CustomClassName</h2>
+            <p><code>hoverClass: 'is-custom-hover'</code></p>
+            <br />
+            <ul>
+                <li><a href="" class="button is-primary" data-hover-custom>BUTTON1</a></li>
+                <li><a href="" class="button is-primary" data-hover-custom>BUTTON2</a></li>
+                <li><a href="" class="button is-primary" data-hover-custom>BUTTON3</a></li>
+            </ul>
+        </nav>
+        <nav class="content">
+            <h2 class="title is-2">MultipleClasses</h2>
+            <p><code>hoverClass: ['is-hover', 'is-custom-hover']</code></p>
+            <br />
+            <ul>
+                <li><a href="" class="button is-primary" data-hover-multiple>BUTTON1</a></li>
+                <li><a href="" class="button is-primary" data-hover-multiple>BUTTON2</a></li>
+                <li><a href="" class="button is-primary" data-hover-multiple>BUTTON3</a></li>
+            </ul>
+        </nav>
+        <nav class="content">
+            <h2 class="title is-2">Callback</h2>
+            <p><code>onEnter: (element, event) => { ... }</code></p>
+            <p><code>onLeave: (element, event) => { ... }</code></p>
+            <p><code>onDestroy: (elements) => { ... }</code></p>
+            <br />
+            <ul>
+                <li><a href="" class="button is-primary" data-hover-callback>LEAVE</a></li>
+                <li><a href="" class="button is-primary" data-hover-callback>LEAVE</a></li>
+                <li><a href="" class="button is-primary" data-hover-callback>LEAVE</a></li>
             </ul>
         </nav>
     </body>
