@@ -10,11 +10,6 @@ interface OptionEntity {
 interface HoverElement extends Element {
     _mdhOptions?: OptionEntity;
 }
-// fix mouseEvent.target
-interface CustomEvent<T extends HoverElement> extends Event {
-    target: T;
-}
-
 /**
  * MultiDeviceHover
  */
@@ -77,8 +72,8 @@ export default class MultiDeviceHover {
      * on mouse enter
      * @param event
      */
-    private static enterLisner(event: CustomEvent<HTMLInputElement>): void {
-        const element: HoverElement = event.target;
+    private static enterLisner(event: Event): void {
+        const element: HoverElement = this as any;
         if (Array.isArray(element._mdhOptions.hoverClass)) {
             element.classList.add(...element._mdhOptions.hoverClass);
         } else {
@@ -90,8 +85,8 @@ export default class MultiDeviceHover {
      * on mouse leave
      * @param event
      */
-    private static leaveLisner(event: CustomEvent<HTMLInputElement>): void {
-        const element: HoverElement = event.target;
+    private static leaveLisner(event: Event): void {
+        const element: HoverElement = this as any;
         if (Array.isArray(element._mdhOptions.hoverClass)) {
             element.classList.remove(...element._mdhOptions.hoverClass);
         } else {
