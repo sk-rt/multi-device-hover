@@ -19,6 +19,7 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "dist": "NODE_ENV=production webpack -p",
+    "build": "webpack -p",
     "lint": "tslint src/**/*.ts --fix --project tsconfig.json",
     "prepare": "npm run dist",
     "publish": "npm publish"
