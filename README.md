@@ -1,13 +1,15 @@
 # MultiDeviceHover
 
-Pure JavaScript library that add  `.is-hover` class instead of css `:hover` for mobile and desktop.
+Pure JavaScript library that add  `.is-hover` class instead of css `:hover` for mobile and desktop.  
+  
+[![NPM](https://nodei.co/npm/multi-device-hover.png?compact=true)](https://nodei.co/npm/multi-device-hover/)
 
 ## Usage
 
 ### Install
 
 Using npm, install multi-device-hover  
-[> npm](https://www.npmjs.com/package/multi-device-hover)
+
 
 ```bash
 $ npm install multi-device-hover --save
@@ -25,6 +27,8 @@ or use stand-alone `dist/standalone/mdh.min.js`
 <script src="path/to/mdh.min.js"></script>
 ```
 ## Example
+[> Examples](https://multi-device-hover.netlify.com/)
+
 ### Markup
 
 ```html
