@@ -65,9 +65,9 @@ MultiDeviceHover.init(hoverElements,{
         console.log("Leave:");
         console.log(element,mouseEvent);
     },
-    onDestroy: (elements) => {
+    onDestroy: (element) => {
         console.log("Destoy:");
-        console.log(elements);
+        console.log(element);
     }
 });
 ```
