@@ -15,3 +15,9 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+
+# declaration do not need   
+mdh.d.ts
+
+# dev
+dev/js

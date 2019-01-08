@@ -59,53 +59,63 @@
                     onLeave: (element, event) => {
                         console.log(element, event);
                         element.innerText = 'LEAVE';
+                    },
+                    onDestroy: element => {
+                        console.log(element);
+                        element.innerText = 'DESTROYED';
                     }
+                });
+                document.getElementById('destroy').addEventListener('click', () => {
+                    MultiDeviceHover.destroy(elementsCallback);
                 });
             });
         </script>
     </head>
     <body>
-        <nav class="content">
-            <h2 class="title is-2">Default</h2>
-            <p>Add Class <code>.is-hover</code></p>
-            <br />
-            <ul>
-                <li><a href="" class="button is-primary" data-hover>BUTTON1</a></li>
-                <li><a href="" class="button is-primary" data-hover>BUTTON2</a></li>
-                <li><a href="" class="button is-primary" data-hover>BUTTON3</a></li>
-            </ul>
-        </nav>
-        <nav class="content">
-            <h2 class="title is-2">CustomClassName</h2>
-            <p><code>hoverClass: 'is-custom-hover'</code></p>
-            <br />
-            <ul>
-                <li><a href="" class="button is-primary" data-hover-custom>BUTTON1</a></li>
-                <li><a href="" class="button is-primary" data-hover-custom>BUTTON2</a></li>
-                <li><a href="" class="button is-primary" data-hover-custom>BUTTON3</a></li>
-            </ul>
-        </nav>
-        <nav class="content">
-            <h2 class="title is-2">MultipleClasses</h2>
-            <p><code>hoverClass: ['is-hover', 'is-custom-hover']</code></p>
-            <br />
-            <ul>
-                <li><a href="" class="button is-primary" data-hover-multiple>BUTTON1</a></li>
-                <li><a href="" class="button is-primary" data-hover-multiple>BUTTON2</a></li>
-                <li><a href="" class="button is-primary" data-hover-multiple>BUTTON3</a></li>
-            </ul>
-        </nav>
-        <nav class="content">
-            <h2 class="title is-2">Callback</h2>
-            <p><code>onEnter: (element, event) => { ... }</code></p>
-            <p><code>onLeave: (element, event) => { ... }</code></p>
-            <p><code>onDestroy: (elements) => { ... }</code></p>
-            <br />
-            <ul>
-                <li><a href="" class="button is-primary" data-hover-callback>LEAVE</a></li>
-                <li><a href="" class="button is-primary" data-hover-callback>LEAVE</a></li>
-                <li><a href="" class="button is-primary" data-hover-callback>LEAVE</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <nav class="content">
+                <h2 class="title is-2">Default</h2>
+                <p>Add Class <code>.is-hover</code></p>
+                <br />
+                <ul>
+                    <li><a href="" class="button is-primary" data-hover>BUTTON1</a></li>
+                    <li><a href="" class="button is-primary" data-hover>BUTTON2</a></li>
+                    <li><a href="" class="button is-primary" data-hover>BUTTON3</a></li>
+                </ul>
+            </nav>
+            <nav class="content">
+                <h2 class="title is-2">CustomClassName</h2>
+                <p><code>hoverClass: 'is-custom-hover'</code></p>
+                <br />
+                <ul>
+                    <li><a href="" class="button is-primary" data-hover-custom>BUTTON1</a></li>
+                    <li><a href="" class="button is-primary" data-hover-custom>BUTTON2</a></li>
+                    <li><a href="" class="button is-primary" data-hover-custom>BUTTON3</a></li>
+                </ul>
+            </nav>
+            <nav class="content">
+                <h2 class="title is-2">MultipleClasses</h2>
+                <p><code>hoverClass: ['is-hover', 'is-custom-hover']</code></p>
+                <br />
+                <ul>
+                    <li><a href="" class="button is-primary" data-hover-multiple>BUTTON1</a></li>
+                    <li><a href="" class="button is-primary" data-hover-multiple>BUTTON2</a></li>
+                    <li><a href="" class="button is-primary" data-hover-multiple>BUTTON3</a></li>
+                </ul>
+            </nav>
+            <nav class="content">
+                <h2 class="title is-2">Callback</h2>
+                <p><code>onEnter: (element, event) => { ... }</code></p>
+                <p><code>onLeave: (element, event) => { ... }</code></p>
+                <p><code>onDestroy: (element) => { ... }</code></p>
+                <br />
+                <ul>
+                    <li><a href="" class="button is-primary" data-hover-callback>LEAVE</a></li>
+                    <li><a href="" class="button is-primary" data-hover-callback>LEAVE</a></li>
+                    <li><a href="" class="button is-primary" data-hover-callback>LEAVE</a></li>
+                </ul>
+                <button id="destroy" class="button is-danger">DESTROY</button>
+            </nav>
+        </div>
     </body>
 </html>
