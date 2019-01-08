@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "description": "Pure JavaScript library that add `.is-hover` class instead of css `:hover` for mobile and desktop.",
   "main": "dist/MultiDeviceHover.js",
+  "types": "dist/MultiDeviceHover.d.ts",
   "author": "R Sakai",
   "repository": {
     "type": "git",
